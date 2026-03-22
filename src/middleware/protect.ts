@@ -17,6 +17,10 @@ export const protect=(req:Request,res:Response,next:NextFunction):void=>{
 
         const decode=jwt.verify(token,process.env.JWT as string) as {userId:number}
 
+        if (!req.body) {
+            req.body = {}
+        }
+
         req.body.userId=decode.userId
 
         next()

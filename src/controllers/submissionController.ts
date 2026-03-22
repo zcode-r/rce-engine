@@ -49,6 +49,7 @@ export const createsubmission = async (req: Request, res: Response) => {
 
     res.status(201).json({
             message: "Code added to the waiting room!",
+            id:submission.id,
             ticket: submission
     })
 
@@ -81,4 +82,22 @@ export const getsubmission=async (req:Request,res:Response):Promise<void>=>{
     res.status(500).json({err:'Internal server error!'})
   }
 
+}
+
+export const gethistory=async (req:Request,res:Response): Promise<void>=>{
+
+  try{
+    const userId=req.body.userId
+
+    const history=await prisma.submission.findMany({
+      where:{userId:userId},
+      orderBy:{id:'desc'}
+    })
+
+    res.status(200).json(history)
+  }
+  catch(err){
+    console.error(err)
+    res.status(500).json({err:'Internal server error!'})
+  }
 }

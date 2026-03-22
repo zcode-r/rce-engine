@@ -1,10 +1,12 @@
 import express from 'express'
 import submissionRoutes from './routes/submissionRoutes.js'
 import authrouter from './routes/authroutes.js'
+import cors from 'cors'
 
 const app = express()
 const PORT = 3000
 
+app.use(cors())
 app.use(express.json())
 
 app.use('/api', submissionRoutes)
