@@ -10,6 +10,6 @@
     "skipLibCheck": true,       /* Speed up compilation */
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*","prisma.config.ts"],
+  "include": ["backend/src/**/*","prisma.config.ts"],
   "exclude": ["node"]
 }
